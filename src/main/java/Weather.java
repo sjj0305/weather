@@ -60,7 +60,7 @@ public class Weather {
             String cityCode = cityMap.entrySet().stream().filter(entry -> entry.getValue().equals(city)).findFirst().orElseThrow(() -> new Exception("city is not correct")).getKey();
             String countryStr = client.request(String.format(COUNTRY_URL, provinceCode, cityCode), "GET");
             Map<String, String> countryMap = gson.fromJson(countryStr, HashMap.class);
-            String countryCode = countryMap.entrySet().stream().filter(entry -> entry.getValue().equals(city)).findFirst().orElseThrow(() -> new Exception("country is not correct")).getKey();
+            String countryCode = countryMap.entrySet().stream().filter(entry -> entry.getValue().equals(county)).findFirst().orElseThrow(() -> new Exception("country is not correct")).getKey();
             String weatherStr = client.request(String.format(WEATHER_URL, provinceCode, cityCode, countryCode), "GET");
             weatherJson = JsonParser.parseString(weatherStr).getAsJsonObject();
             return weatherJson.has("weatherinfo") ? Optional.of(Double.valueOf(weatherJson.getAsJsonObject("weatherinfo").get("temp").getAsString()).intValue()) : Optional.empty();
