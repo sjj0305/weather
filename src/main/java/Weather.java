@@ -39,7 +39,6 @@ public class Weather {
                 return task.get();
             }else{
                 task.cancel(true);
-                System.out.println("getTemperature timeout more than 100s");
             }
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());

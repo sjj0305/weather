@@ -6,7 +6,7 @@ public class Test {
 
     @org.junit.Test
     public  void success(){
-        Assert.assertTrue("the temp should be 23",23==weather.getTemperature("江苏","苏州","太仓").get());
+        Assert.assertTrue("the temp should be 22",22==weather.getTemperature("江苏","苏州","太仓").get());
     }
 
     @org.junit.Test
